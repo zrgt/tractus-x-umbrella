@@ -31,17 +31,17 @@ portal:
     primary:
       persistence:
         enabled: false
-  portalAddress: "https://portal.tx.test"
-  portalBackendAddress: "https://portal-backend.tx.test"
-  centralidpAddress: "https://centralidp.tx.test"
-  sharedidpAddress: "https://sharedidp.tx.test"
-  semanticsAddress: "https://semantics.tx.test"
-  bpdmPartnersPoolAddress: "https://business-partners.tx.test"
-  bpdmPortalGateAddress: "https://business-partners.tx.test"
-  custodianAddress: "https://managed-identity-wallets.tx.test"
-  sdfactoryAddress: "https://sdfactory.tx.test"
-  clearinghouseAddress: "https://validation.tx.test"
-  clearinghouseTokenAddress: "https://keycloak.tx.test/realms/example/protocol/openid-connect/token"
+  portalAddress: "https://portal.tx05.test"
+  portalBackendAddress: "https://portal-backend.tx05.test"
+  centralidpAddress: "https://centralidp.tx05.test"
+  sharedidpAddress: "https://sharedidp.tx05.test"
+  semanticsAddress: "https://semantics.tx05.test"
+  bpdmPartnersPoolAddress: "https://business-partners.tx05.test"
+  bpdmPortalGateAddress: "https://business-partners.tx05.test"
+  custodianAddress: "https://managed-identity-wallets.tx05.test"
+  sdfactoryAddress: "https://sdfactory.tx05.test"
+  clearinghouseAddress: "https://validation.tx05.test"
+  clearinghouseTokenAddress: "https://keycloak.tx05.test/realms/example/protocol/openid-connect/token"
   frontend:
     ingress:
       enabled: true
@@ -50,15 +50,15 @@ portal:
         nginx.ingress.kubernetes.io/rewrite-target: "/$1"
         nginx.ingress.kubernetes.io/use-regex: "true"
         nginx.ingress.kubernetes.io/enable-cors: "true"
-        nginx.ingress.kubernetes.io/cors-allow-origin: "https://*.tx.test"
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://*.tx05.test"
       tls:
         # -- Provide tls secret.
-        - secretName: "portal.tx.test-tls"
+        - secretName: "portal.tx05.test-tls"
           # -- Provide host for tls secret.
           hosts:
-            - "portal.tx.test"
+            - "portal.tx05.test"
       hosts:
-        - host: "portal.tx.test"
+        - host: "portal.tx05.test"
           paths:
             - path: "/(.*)"
               pathType: "ImplementationSpecific"
@@ -142,7 +142,7 @@ portal:
         clientId: "sa-cl2-03"
         clientSecret: "wyNYzSnyu4iGvj17XgLSl0aQxAPjTjmI"
     mailing:
-      host: "smtp.tx.test"
+      host: "smtp.tx05.test"
       port: "587"
       user: "smtp-user"
       senderEmail: "smtp@tx.test"
@@ -153,17 +153,17 @@ portal:
     provisioning:
       sharedRealm:
         smtpServer:
-          host: "smtp.tx.test"
+          host: "smtp.tx05.test"
           port: "587"
           user: "smtp-user"
           password: ""
           from: "smtp@tx.test"
           replyTo: "smtp@tx.test"
-    # -- docs: https://portal-backend.tx.test/api/administration/swagger/index.html
-    # https://portal-backend.tx.test/api/registration/swagger/index.html
-    # https://portal-backend.tx.test/api/apps/swagger/index.html
-    # https://portal-backend.tx.test/api/services/swagger/index.html
-    # https://portal-backend.tx.test/api/notification/swagger/index.html
+    # -- docs: https://portal-backend.tx05.test/api/administration/swagger/index.html
+    # https://portal-backend.tx05.test/api/registration/swagger/index.html
+    # https://portal-backend.tx05.test/api/apps/swagger/index.html
+    # https://portal-backend.tx05.test/api/services/swagger/index.html
+    # https://portal-backend.tx05.test/api/notification/swagger/index.html
     ingress:
       enabled: true
       name: "portal-backend"
@@ -172,15 +172,15 @@ portal:
         nginx.ingress.kubernetes.io/use-regex: "true"
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-        nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000, https://*.tx.test"
+        nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000, https://*.tx05.test"
       tls:
         # -- Provide tls secret.
-        - secretName: "portal-backend.tx.test-tls"
+        - secretName: "portal-backend.tx05.test-tls"
           # -- Provide host for tls secret.
           hosts:
-            - "portal-backend.tx.test"
+            - "portal-backend.tx05.test"
       hosts:
-        - host: "portal-backend.tx.test"
+        - host: "portal-backend.tx05.test"
           paths:
             - path: "/api/registration"
               pathType: "Prefix"
@@ -309,12 +309,12 @@ centralidp:
     ingress:
       enabled: true
       ingressClassName: "nginx"
-      hostname: "centralidp.tx.test"
+      hostname: "centralidp.tx05.test"
       annotations:
         cert-manager.io/cluster-issuer: "my-ca-issuer"
         nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
         nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-        nginx.ingress.kubernetes.io/cors-allow-origin: "https://centralidp.tx.test"
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://centralidp.tx05.test"
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
         nginx.ingress.kubernetes.io/proxy-buffering: "on"
@@ -437,12 +437,12 @@ sharedidp:
     ingress:
       enabled: true
       ingressClassName: "nginx"
-      hostname: "sharedidp.tx.test"
+      hostname: "sharedidp.tx05.test"
       annotations:
         cert-manager.io/cluster-issuer: "my-ca-issuer"
         nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
         nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-        nginx.ingress.kubernetes.io/cors-allow-origin: "https://sharedidp.tx.test"
+        nginx.ingress.kubernetes.io/cors-allow-origin: "https://sharedidp.tx05.test"
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
         nginx.ingress.kubernetes.io/proxy-buffering: "on"
@@ -497,20 +497,20 @@ discoveryfinder:
       initialDelaySeconds: 200
     readinessProbe:
       initialDelaySeconds: 200
-    host: semantics.tx.test
+    host: semantics.tx05.test
     properties:
       discoveryfinder:
         initialEndpoints:
           - type: bpn
-            endpointAddress: https://portal-backend.tx.test/api/administration/Connectors/discovery
+            endpointAddress: https://portal-backend.tx05.test/api/administration/Connectors/discovery
             description: Service to discover connector endpoints based on bpns
-            documentation: https://portal-backend.tx.test/api/administration/swagger/index.html
+            documentation: https://portal-backend.tx05.test/api/administration/swagger/index.html
     idp:
-      issuerUri: "https://centralidp.tx.test/auth/realms/CX-Central"
+      issuerUri: "https://centralidp.tx05.test/auth/realms/CX-Central"
       publicClientId: "Cl21-CX-DF"
     dataSource:
       url: "jdbc:postgresql://{{ .Release.Name }}-discoveryfinder-postgresql:5432/discoveryfinder"
-    # -- docs: https://semantics.tx.test/discoveryfinder/swagger-ui/index.html
+    # -- docs: https://semantics.tx05.test/discoveryfinder/swagger-ui/index.html
     ingress:
       enabled: true
       tls: true
@@ -537,13 +537,13 @@ sdfactory:
   enabled: false
   secret:
     # -- JWK Set URI
-    jwkSetUri: "https://centralidp.tx.test/auth/realms/CX-Central/protocol/openid-connect/certs"
+    jwkSetUri: "https://centralidp.tx05.test/auth/realms/CX-Central/protocol/openid-connect/certs"
     # -- Custodian wallet client id
     clientId: ""
     # -- Custodian wallet client secret
     clientSecret: ""
     # -- Keycloak URL
-    authServerUrl: "https://centralidp.tx.test/auth"
+    authServerUrl: "https://centralidp.tx05.test/auth"
     # -- Keycloak Realm detail
     realm: ""
     # -- Keycloak Resource detail
@@ -617,7 +617,7 @@ managed-identity-wallet:
     - name: shared-certs
       mountPath: /opt/java/openjdk/lib/security
   miw:
-    host: "managed-identity-wallets.tx.test"
+    host: "managed-identity-wallets.tx05.test"
     authorityWallet:
       bpn: &authority-bpn "BPNL00000003CRHK"
       name: "Catena-X"
@@ -625,7 +625,7 @@ managed-identity-wallet:
       host: "{{ .Release.Name }}-miw-postgres"
       secret: "{{ .Release.Name }}-miw-postgres"
     keycloak:
-      url: "https://centralidp.tx.test/auth"
+      url: "https://centralidp.tx05.test/auth"
       realm: "CX-Central"
       clientId: "Cl5-CX-Custodian"
     ssi:
@@ -646,24 +646,24 @@ managed-identity-wallet:
     initialDelaySeconds: 90
   readinessProbe:
     initialDelaySeconds: 90
-  # -- docs: http://managed-identity-wallets.tx.test/ui/swagger-ui/index.html
+  # -- docs: http://managed-identity-wallets.tx05.test/ui/swagger-ui/index.html
   ingress:
     enabled: true
     hosts:
-      - host: "managed-identity-wallets.tx.test"
+      - host: "managed-identity-wallets.tx05.test"
         paths:
           - path: "/"
             pathType: "ImplementationSpecific"
     # uncomment the following lines for tls
     # tls:
-    #   - secretName: "managed-identity-wallets.tx.test-tls"
+    #   - secretName: "managed-identity-wallets.tx05.test-tls"
     #     hosts:
-    #       - "managed-identity-wallets.tx.test"
+    #       - "managed-identity-wallets.tx05.test"
     className: "nginx"
     annotations:
       # uncomment the following line for tls
       # cert-manager.io/cluster-issuer: "my-ca-issuer"
-      nginx.ingress.kubernetes.io/cors-allow-origin: http://portal.tx.test
+      nginx.ingress.kubernetes.io/cors-allow-origin: http://portal.tx05.test
       nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
       nginx.ingress.kubernetes.io/cors-allow-methods: GET
       nginx.ingress.kubernetes.io/enable-cors: "true"
@@ -681,10 +681,10 @@ dataconsumerOne:
     controlplane:
       ssi:
         miw:
-          url: http://managed-identity-wallets.tx.test
+          url: http://managed-identity-wallets.tx05.test
           authorityId: *authority-bpn
         oauth:
-          tokenurl: http://centralidp.tx.test/auth/realms/CX-Central/protocol/openid-connect/token
+          tokenurl: http://centralidp.tx05.test/auth/realms/CX-Central/protocol/openid-connect/token
           client:
             id: satest01
             secretAlias: edc-miw-keycloak-secret
@@ -693,7 +693,7 @@ dataconsumerOne:
           authKey: TEST1
       ingresses:
         - enabled: true
-          hostname: "dataconsumer-1-controlplane.tx.test"
+          hostname: "dataconsumer-1-controlplane.tx05.test"
           endpoints:
             - default
             - protocol
@@ -704,7 +704,7 @@ dataconsumerOne:
     dataplane:
       ingresses:
         - enabled: true
-          hostname: "dataconsumer-1-dataplane.tx.test"
+          hostname: "dataconsumer-1-dataplane.tx05.test"
           endpoints:
             - default
             - public
@@ -756,10 +756,10 @@ tx-data-provider:
     controlplane:
       ssi:
         miw:
-          url: http://managed-identity-wallets.tx.test
+          url: http://managed-identity-wallets.tx05.test
           authorityId: *authority-bpn
         oauth:
-          tokenurl: http://centralidp.tx.test/auth/realms/CX-Central/protocol/openid-connect/token
+          tokenurl: http://centralidp.tx05.test/auth/realms/CX-Central/protocol/openid-connect/token
           client:
             id: satest02
             secretAlias: edc-miw-keycloak-secret
@@ -768,7 +768,7 @@ tx-data-provider:
           authKey: TEST2
       ingresses:
         - enabled: true
-          hostname: "dataprovider-controlplane.tx.test"
+          hostname: "dataprovider-controlplane.tx05.test"
           endpoints:
             - default
             - protocol
@@ -779,7 +779,7 @@ tx-data-provider:
     dataplane:
       ingresses:
         - enabled: true
-          hostname: "dataprovider-dataplane.tx.test"
+          hostname: "dataprovider-dataplane.tx05.test"
           endpoints:
             - default
             - public
@@ -857,10 +857,10 @@ dataconsumerTwo:
     controlplane:
       ssi:
         miw:
-          url: http://managed-identity-wallets.tx.test
+          url: http://managed-identity-wallets.tx05.test
           authorityId: *authority-bpn
         oauth:
-          tokenurl: http://centralidp.tx.test/auth/realms/CX-Central/protocol/openid-connect/token
+          tokenurl: http://centralidp.tx05.test/auth/realms/CX-Central/protocol/openid-connect/token
           client:
             id: satest03
             secretAlias: edc-miw-keycloak-secret
@@ -869,7 +869,7 @@ dataconsumerTwo:
           authKey: TEST3
       ingresses:
         - enabled: true
-          hostname: "dataconsumer-2-controlplane.tx.test"
+          hostname: "dataconsumer-2-controlplane.tx05.test"
           endpoints:
             - default
             - protocol
@@ -880,7 +880,7 @@ dataconsumerTwo:
     dataplane:
       ingresses:
         - enabled: true
-          hostname: "dataconsumer-2-dataplane.tx.test"
+          hostname: "dataconsumer-2-dataplane.tx05.test"
           endpoints:
             - default
             - public
@@ -925,7 +925,7 @@ pgadmin4:
     enabled: true
     ingressClassName: "nginx"
     hosts:
-      - host: pgadmin4.tx.test
+      - host: pgadmin4.tx05.test
         paths:
         - path: /
           pathType: Prefix
