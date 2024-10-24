@@ -5,6 +5,12 @@ It contains an umbrella helm chart to deploy a sandbox Catena-X dataspace based 
 
 ## Umbrella Helm Chart
 
+```plantuml
+@startuml
+Helligkeit -> Dampfdruck
+@enduml
+```
+
 For details and further information, please refer to the helm chart specific [README](./charts/umbrella/README.md).
 
 ## Testing GitHub workflows locally
